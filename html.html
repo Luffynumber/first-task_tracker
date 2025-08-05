@@ -4,19 +4,28 @@
         <!--This meta line is used for different devices to fit it ex: smartphones, tvs , ipads etc-->
         <meta name="viewport" content="initial-scale=1, width=device-width">
         <title>
-            Hello, this is a Title!
+            Hello, This is a Task Manager!
         </title>
+        <link rel="stylesheet" href="pretty.CSS"></link>
+        <script defer src="Javascript.js"></script>
     </head>
+
     <body>
-        <!-- allows you to add a video this method 1
-        <video autoplay loop muted width="300">
-            <source src="video/YOU ARE POOR XQC.mp4" type="video/mp4">
-        -->
-            visit <a href="video/YOU ARE POOR XQC.mp4">XQC FLEXING</a>
-       
-            <!--<iframe allowfullscreen src="video/YOU ARE POOR XQC.mp4">
-            this method too using <iframe>
-            </iframe>
-            -->
+        <div class="Holder">
+            <h3>Task Manager!</h3>
+            <form>
+                <p class="poop"> Please enter something!</p>
+                <input type="text" placeholder="Enter a task">
+                <button id="add task"> Add</button>
+                <input id="search-input" type="text" placeholder="search a task">
+                <ul class="task-list">
+                    <li>
+                        <input type="text" value="Build some projects" disabled/>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
     </body>
 </html>
