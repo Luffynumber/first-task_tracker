@@ -6,10 +6,27 @@
 // 6. give the user their winnings
 // 7. play again
 
-const PromptSync = require("prompt-sync");
+
 
 // parseFloat turns "17.50" into 17.50 a number wihtout rounding it
 const prompt = require("prompt-sync")();// using this allows you to grab users input using the package npm
+
+const ROWS = 3;
+const COLS = 3;
+
+const SYMBOLS_COUNT = {
+    "A": 2,
+    "B": 4,
+    "C": 6,
+    "D": 8
+}
+
+const SYMBOL_VALUES = {
+    "A": 5,
+    "B": 4,
+    "C": 3,
+    "D": 2
+}
 
 const deposit = () => {
     while (true){
@@ -43,7 +60,7 @@ const getbet = (balance) => {
         const bet = prompt("Enter the total bet per line: ");
         const numberbet = parseFloat(bet);
 
-        if(isNaN(numberbet) || numberbet <= 0 || numberbet > balance / lines){
+        if(isNaN(numberbet) || numberbet <= 0 || numberbet > balance / numberOfLines){
             console.log("Invalid bet...");
         } else {
             return numberbet;
@@ -51,6 +68,29 @@ const getbet = (balance) => {
 
     }
 };
+
+const spin = () =>{
+    const symbols = [];
+    for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)){
+        for(let i = 0; i < count; i++) {
+            symbols.push(symbol);
+        }
+    }
+    const reels = [[],[],[]];
+    for(let i = 0; i < COLS; i++){
+        const reelSymbols = [...symbols];
+        for(let j = 0; j < ROWS; j++){
+            const randomIndex = Math.floor(Math.random() * reelSymbols.length);
+            const selectedSymbol = reelSymbols[randomIndex];
+            reels[i].push(selectedSymbol);
+            reelSymbols.splice(randomIndex, 1);
+        }
+    }
+    return reels;
+};
+
+reels();
+spin();
 
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
