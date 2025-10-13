@@ -156,8 +156,16 @@ const game = () => {
         if (balance <= 0) {
             console.log("YOu have ran out of money nigga!");
             break;
-        }
-    }  
+        };
+
+        const playAgain = prompt("Do you wish to play again? (y/n)? ");
+
+        if (playAgain != "y"){
+            console.log(`Your new balance is ${balance}`);
+            break;
+        };
+    };
+
 };
 
 game();
